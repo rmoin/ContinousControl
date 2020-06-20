@@ -1,15 +1,14 @@
 # Report
----
+
 This work utilised the [DDPG](https://arxiv.org/abs/1509.02971) (Deep Deterministic Policy Gradient) architecture outlined in the original paper
 
 ## State and Action Spaces
+
 In this environment, a double-jointed arm can move to target locations. A reward of +0.1 is provided for each step that the agent's hand is in the goal location. Thus, the goal of our agent is to maintain its position at the target location for as many time steps as possible. In our case, we used the environment version of 20 different arms.
 
 The observation space consists of 33 variables corresponding to position, rotation, velocity, and angular velocities of the arm. Each action is a vector with four numbers, corresponding to torque applicable to two joints. Every entry in the action vector must be a number between -1 and 1.
 
 ## Learning Algorithm
-
-This work utilised the DDPG (Deep Deterministic Policy Gradient) architecture outlined in the original paper.
 
 It continues episodical training via the agent until `n_episoses` is reached or until the environment is solved. The  environment is considered solved when the average reward (over the last 100 episodes) is at least +30.0. Note if the number of agents is >1 then the average reward of all agents at that step is used. Since we used multiple agents version, our agent must achieve a score of +30 averaged across all 20 agents for 100 consecutive episodes.
 
@@ -69,6 +68,7 @@ Environment SOLVED in 155 episodes!	Moving Average =30.1 over last 100 episodes
 ```
 
 ## Ideas for Future Work
-Trainging occured in Udacity workspace. In earlier versions of implementations, we had trouble getting the agents to learn. To combat this, we implemented gradient clipping using the torch.nn.utils.clip_grad_norm_ function and batch normalization.
+
+Training occured in Udacity workspace. In earlier versions of implementations, we had trouble getting the agents to learn. To combat this, we implemented gradient clipping using the torch.nn.utils.clip_grad_norm_ function and batch normalization.
 
 In future Proximal Policy Optimization (PPO), Trust Region Policy Optimization (TRPO) and Distributed Distributional Deterministic Policy Gradients (D4PG) methods could be explored. Also, we can explore prioritized experience replay — rather than selecting experience tuples randomly, prioritized replay selects experiences based on a priority value that is correlated with the magnitude of error. 
