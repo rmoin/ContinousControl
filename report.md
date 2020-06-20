@@ -41,7 +41,7 @@ Where
 
 ### Neural Networks
 
-Actor and Critic network models were defined in [`model.py`](https://github.com/rmoin/ContinuousControl/model.py).
+Actor and Critic network models were defined in [`model.py`](https://github.com/rmoin/ContinuousControl/blob/master/model.py).
 
 The Actor networks utilised two fully connected layers with 400 and 300 units with batch norm, relu activation and tanh activation for the action space. The network has an initial dimension the same as the state size.
 
