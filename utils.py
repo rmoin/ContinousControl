@@ -7,7 +7,7 @@ from collections import namedtuple, deque
 
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
-## Util function to randomly sample the expereinces tuples from memory
+## Util function to randomly sample the experiences tuples from memory
 def sample(memory, batch_size):
     """Randomly sample a batch of experiences from memory."""
     experiences = random.sample(memory, batch_size)
@@ -43,7 +43,7 @@ class OUNoise:
         self.mu = mu * np.ones(size)
         self.theta = theta
         self.sigma = sigma
-        self.seed = random.seed(seed)
+        random.seed(seed)
         self.reset()
 
     def reset(self):
@@ -53,7 +53,6 @@ class OUNoise:
     def sample(self):
         """Update internal state and return it as a noise sample."""
         x = self.state
-        dx = self.theta * (self.mu - x) + self.sigma * np.array([random.random() for i in range(len(x))])
+        dx = self.theta * (self.mu - x) + self.sigma * np.array([np.random.normal() for i in range(len(x))])
         self.state = x + dx
         return self.state
-        

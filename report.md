@@ -10,6 +10,14 @@ The observation space consists of 33 variables corresponding to position, rotati
 
 ## Learning Algorithm
 
+This project implements an off-policy method called Deep Deterministic Policy Gradient and described in the paper refrenced above.
+
+Deep Deterministic Policy Gradient (DDPG) is an algorithm which concurrently learns a Q-function and a policy. It uses off-policy data and the Bellman equation to learn the Q-function, and uses the Q-function to learn the policy.
+
+Please see a pseudocode below from OpenAI's [Spinning Up](https://spinningup.openai.com/en/latest/algorithms/ddpg.html) website.
+
+![pseudocode](pseudocode.png)
+
 It continues episodical training via the agent until `n_episoses` is reached or until the environment is solved. The  environment is considered solved when the average reward (over the last 100 episodes) is at least +30.0. Note if the number of agents is >1 then the average reward of all agents at that step is used. Since we used multiple agents version, our agent must achieve a score of +30 averaged across all 20 agents for 100 consecutive episodes.
 
 Each episode continues until `max_t` time-steps is reached or until the environment says it's done.
@@ -51,19 +59,10 @@ The Critic networks utilised two fully connected layers with 400 and 300 units w
 ![results](plot.png)
 
 ```
-Episode 93 (221 sec)  -- 	Min: 30.8	Max: 39.4	Mean: 35.6	Mov. Avg: 33.7
-Episode 94 (220 sec)  -- 	Min: 30.8	Max: 37.7	Mean: 35.2	Mov. Avg: 33.7
-Episode 95 (221 sec)  -- 	Min: 30.3	Max: 36.4	Mean: 34.4	Mov. Avg: 33.7
-Episode 96 (220 sec)  -- 	Min: 31.6	Max: 38.8	Mean: 34.9	Mov. Avg: 33.7
 Including Previous Runs -- Total Episodes 250  -- 	Real Mov. Avg: 29.9
-Episode 97 (220 sec)  -- 	Min: 30.0	Max: 38.3	Mean: 35.1	Mov. Avg: 33.7
-Episode 98 (221 sec)  -- 	Min: 27.3	Max: 38.4	Mean: 33.3	Mov. Avg: 33.7
-Episode 99 (221 sec)  -- 	Min: 8.1	Max: 39.4	Mean: 33.1	Mov. Avg: 33.7
-Episode 100 (221 sec)  -- 	Min: 27.0	Max: 39.4	Mean: 36.3	Mov. Avg: 33.7
 Including Previous Runs -- Total Episodes 254  -- 	Real Mov. Avg: 30.0
-Episode 101 (221 sec)  -- 	Min: 31.3	Max: 39.0	Mean: 35.7	Mov. Avg: 33.9
 
-Environment SOLVED in 155 episodes!	Moving Average =30.1 over last 100 episodes
+Environment SOLVED in 155 (255-100) episodes!	Moving Average =30.1 over last 100 episodes
 
 ```
 
